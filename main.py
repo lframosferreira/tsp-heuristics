@@ -1,12 +1,16 @@
-from algorithms import twice_around_the_tree
+import sys
+
 import networkx as nx
-from util import parse_input_file
+import tsplib95
+
+from algorithms import christofides, twice_around_the_tree
+from util import get_time_for_every_instance_and_dump
 
 
 def main() -> None:
-    print("Hello TSP")
-    graph: nx.Graph = parse_input_file("instances/EUC_2D/pr76.tsp")
-    print(graph.get_edge_data(1, 2))
+    # a = tsplib95.load("instances/EUC_2D/kroE100.tsp")
+    # b = a.get_edges()
+    get_time_for_every_instance_and_dump("twice_around_the_tree")
 
 
 if __name__ == "__main__":
