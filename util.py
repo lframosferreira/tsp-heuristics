@@ -7,16 +7,23 @@ import tsplib95
 
 from algorithms import christofides, twice_around_the_tree
 
-EUC_2D_DIR: str = "instances/EUC_2D"
 NUMBER_OF_EXECUTIONS: int = 20
+INSTANCES_FOLDER: str = "instances/tsplib95"
 
+def get_graph_from_tsplib95_file(filepath: str, is_euc_2d: bool = True)->networkx.Graph:
+    if is_euc_2d:
+        return tsplib95.load(filepath).get_graph()
+    else:
+        problem = tsplib95.load(filepath)
+        problem._wfunc = lambda start, end: tsplib95.distances.pseudo_euclidean(problem.node_coords[start], problem.node_coords[end])
+        return problem.get_graph()
 
 def get_time_for_every_instance_and_dump(filename: str = "output.csv") -> None:
     df: pd.DataFrame = pd.DataFrame(
         columns=["algorithm", "instance", "path_weight", "time"]
     )
-    for file in os.listdir(EUC_2D_DIR):
-        graph = tsplib95.load(f"{EUC_2D_DIR}/{file}").get_graph()
+    for file in os.listdir(INSTANCES_FOLDER):
+        graph: networkx.Graph = get_graph_from_tsplib95_file(f"{INSTANCES_FOLDER}/{file}", not file.startswith("att"))
         total_time: float = 0.0
         weight: int = 0
         for _ in range(NUMBER_OF_EXECUTIONS):
@@ -35,17 +42,5 @@ def get_time_for_every_instance_and_dump(filename: str = "output.csv") -> None:
             ],
             ignore_index=True,
         )
-        # start: float = time.perf_counter()
-        # path = christofides(graph)
-        # weight = networkx.path_weight(graph, path, "weight")
-        # end: float = time.perf_counter()
-        # df = pd.concat(
-        #     [
-        #         pd.DataFrame(
-        #             [["christofides", file, weight, end - start]], columns=df.columns
-        #         ),
-        #         df,
-        #     ],
-        #     ignore_index=True,
-        # )
+
     df.to_csv(filename)

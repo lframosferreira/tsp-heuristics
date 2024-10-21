@@ -3,28 +3,26 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{booktabs}
 
-\title{Heurística Construtiva}
-\author{Luís Felipe Ramos Ferreira}
-\date{\href{mailto:lframos.lf@gmail.com}{\texttt{lframos.lf@gmail.com}}
-}
+\title{\vspace{-3em} Heurística Construtiva \\ Luís Felipe Ramos Ferreira \vspace{-3em}}
+\date{}
 
 \begin{document}
 
 \maketitle
 
-Como heurística construtiva foram desenvolvidos tanto o algoritmo \textit{twice around the tree} quanto o algoritmo de \(Christofides\).
+Como heurística construtiva foram desenvolvidos tanto o algoritmo \textit{twice around the tree} quanto o algoritmo de \textit{Christofides}.
 No entanto, para simplificar, abordarei nesse relatório apenas o primeiro. O código fonte pode ser encontrado neste \href{https://github.com/lframosferreira/tsp-heuristics}{repositório}, em particular
-o código do \textit{twice artound the tree} pode ser encontrado no arquivo \texttt{algorithms.py}.
+o código do \textit{twice around the tree} pode ser encontrado no arquivo \texttt{algorithms.py}.
 
 O algoritmo \textit{twice around the tree} é um algoritmo construtivo e aproximativo para o problema do caixeiro viajante simétrico e que respeita a desigualdade triangular. O algoritmo é 2-aproximativo, ou seja,
-encontra um caminho do caixeiro que tem comprimento no máximo duas vezes igual ao caminho ótimo.
+encontra um caminho do caixeiro que tem comprimento no máximo duas vezes igual ao caminho ótimo. O primeiro passo do algoritmo é a construção da árvore geradora mínima do grafo original,o que pode ser feito de forma eficiente com algoritmos como o de \href{https://en.wikipedia.org/wiki/Kruskal\%27s\_algorithm}{Kruskal}. A partir da árvore geradora mínima, escolhe-se um nó qualquer e se executa uma busca em profundidade na árvore. A order dos vértices dessa busca em pré ordem, concatenado com o vértice original, é o caminho final encontrado para o caixeiro. 
 
 A tabela abaixo mostra o tempo médio requerido por cada instância quando executadas 20 vezes cada uma. A tabela também mostra o custo do caminho do caixeiro encontrado pelo algoritmo.
 
 \begin{center}
 	\begin{tabular}{lllrr}
 		\toprule
-		instance     & path\_weight & time     \\
+        instance     & path\_weight & time(s)    \\
 		\midrule
 		kroD100.tsp  & 27112        & 0.005099 \\
 		lin105.tsp   & 19495        & 0.006008 \\
@@ -49,7 +47,5 @@ A tabela abaixo mostra o tempo médio requerido por cada instância quando execu
 		\bottomrule
 	\end{tabular}
 \end{center}
-
-
 
 \end{document}
