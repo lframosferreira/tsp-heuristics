@@ -1,0 +1,62 @@
+\documentclass{article}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{booktabs}
+
+\title{\vspace{-3em} Metaheurística \\ Luís Felipe Ramos Ferreira \vspace{-3em}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+Como metaheurística foi desenvolvido o algoritmo de \href{https://en.wikipedia.org/wiki/Simulated_annealing}{\textit{Simulated Annealing}}. Essa metaheurísticas é inspirada
+no processo físico de \textit{annealing} utilizado na metalurgia pra alterar as propriedades físicas de algum metal. Essa abordagem pode ser utilizada em diversos problemas de natureza difícil,
+inclusive no TSP.
+
+A ideia principal da abordagem
+
+Como hiperparâmetros inicias para essa bateria de testes apresentada neste documento, foram utilizados os valores de temperatura inicial igual a 10, \(\delta_t = 0.9\) e limite inferior de temperatura igual a 0.10. Esse valores foram interesantes
+pois apresentaram um bom resultado em um tempo não muito alto para as instâncias testadas. No mundo real, diferentes valores devem ser testados para garantir que o objetivo principal ao ser utilizado o algoritmo seja atingido.
+Se o interesse principal for uma execução rápida, os parâmetros inciais podem ser bem diferentes de casos em que o desejo é o de um caminho do caixeiro de custo baixo, em troca de uma execução lenta.
+
+# initial config (can be changed)
+TEMPERATURE = 10.0
+DELTA_T = 0.9
+TEMPERATURE_INFERIOR_LIMIT = 0.10
+
+\begin{center}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Algorithm & Instance     & Path Weight & Time   \\ \hline
+			sa        & kroD100.tsp  & 32445       & 0.1660 \\ \hline
+			sa        & lin105.tsp   & 21930       & 0.1835 \\ \hline
+			sa        & att48.tsp    & 11916       & 0.0681 \\ \hline
+			sa        & kroB150.tsp  & 47631       & 0.2201 \\ \hline
+			sa        & berlin52.tsp & 9419        & 0.0708 \\ \hline
+			sa        & kroA200.tsp  & 58072       & 0.2929 \\ \hline
+			sa        & rat195.tsp   & 4146        & 0.2827 \\ \hline
+			sa        & pr152.tsp    & 148754      & 0.2201 \\ \hline
+			sa        & st70.tsp     & 880         & 0.0967 \\ \hline
+			sa        & pr144.tsp    & 132181      & 0.2077 \\ \hline
+			sa        & pr124.tsp    & 123801      & 0.1748 \\ \hline
+			sa        & pr136.tsp    & 159539      & 0.1975 \\ \hline
+			sa        & kroB200.tsp  & 62789       & 0.2937 \\ \hline
+			sa        & kroB100.tsp  & 33466       & 0.1424 \\ \hline
+			sa        & kroA150.tsp  & 48895       & 0.2198 \\ \hline
+			sa        & kroA100.tsp  & 35865       & 0.1425 \\ \hline
+			sa        & pr107.tsp    & 75366       & 0.1497 \\ \hline
+			sa        & kroE100.tsp  & 34696       & 0.1406 \\ \hline
+			sa        & rat99.tsp    & 1786        & 0.1378 \\ \hline
+			sa        & kroC100.tsp  & 31168       & 0.1420 \\ \hline
+			sa        & pr76.tsp     & 142017      & 0.1082 \\ \hline
+		\end{tabular}
+		\caption{Path weights and times for various TSP instances using the sa (simulated annealing) algorithm}
+	\end{table}
+
+\end{center}
+
+
+\end{document}
