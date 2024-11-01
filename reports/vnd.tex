@@ -3,25 +3,17 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{booktabs}
 
-\title{\vspace{-3em} Metaheurística \\ Luís Felipe Ramos Ferreira \vspace{-3em}}
+\title{\vspace{-3em} VND \\ Luís Felipe Ramos Ferreira \vspace{-3em}}
 \date{}
 
 \begin{document}
 
 \maketitle
 
-Como metaheurística foi desenvolvido o algoritmo de \href{https://en.wikipedia.org/wiki/Simulated_annealing}{\textit{Simulated Annealing}}. Essa metaheurísticas é inspirada
+Como heurística VND foi desenvolvido o algoritmo de \href{https://en.wikipedia.org/wiki/Simulated_annealing}{\textit{Simulated Annealing}}. Essa metaheurísticas é inspirada
 no processo físico de \textit{annealing} utilizado na metalurgia pra alterar as propriedades físicas de algum metal. Essa abordagem pode ser utilizada em diversos problemas de natureza difícil,
 inclusive no TSP. O código da implementação pode ser encontrado nesse \href{https://github.com/lframosferreira/tsp-heuristics}{repositório}, em particular a heurística descrita foi implementada no arquivo
 \textit{simulated\_annealing.py}.
-
-A ideia principal da abordagem é testar caminhos novos aleatoriamente a cada iteração. Se o caminho novo for melhor que o atual, ele é mantido. Se for pior, ele é mantido com uma probabilidade proporcional à hiperparâmetros
-do algoritmo. O objetivo é fazer com que o algoritmo busque no espaço de soluções a solução ótima e sempre se movimente em direção à um mínimo. O uso de processos estocásticos auxilia para evitar que o algoritmo
-fique preso em um mínimo local e possa explorar novas áreas, podendo chegar assim mais perto do mínimo global.
-
-Como hiperparâmetros inicias para essa bateria de testes apresentada neste documento, foram utilizados os valores de temperatura inicial igual a 10, \(\delta_t = 0.9\) e limite inferior de temperatura igual a 0.10. Esse valores foram interesantes
-pois apresentaram um bom resultado em um tempo não muito alto para as instâncias testadas. No mundo real, diferentes valores devem ser testados para garantir que o objetivo principal ao ser utilizado o algoritmo seja atingido.
-Se o interesse principal for uma execução rápida, os parâmetros inciais podem ser bem diferentes de casos em que o desejo é o de um caminho do caixeiro de custo baixo, em troca de uma execução lenta.
 
 \begin{center}
 	\begin{table}[h!]
