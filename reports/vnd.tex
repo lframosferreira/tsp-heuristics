@@ -10,43 +10,47 @@
 
 \maketitle
 
-Como heurística VND foi desenvolvido o algoritmo de \href{https://en.wikipedia.org/wiki/Simulated_annealing}{\textit{Simulated Annealing}}. Essa metaheurísticas é inspirada
-no processo físico de \textit{annealing} utilizado na metalurgia pra alterar as propriedades físicas de algum metal. Essa abordagem pode ser utilizada em diversos problemas de natureza difícil,
-inclusive no TSP. O código da implementação pode ser encontrado nesse \href{https://github.com/lframosferreira/tsp-heuristics}{repositório}, em particular a heurística descrita foi implementada no arquivo
-\textit{simulated\_annealing.py}.
+Como heurística VND (\textit{Variable Neighbourhood Descent}) foi desenvolvido o algoritmo de \href{https://en.wikipedia.org/wiki/2-opt}{\textit{2-OPT}}.
+O algoritmo tem como ideia principal pegar duas rotas no caminho do caixeiro que passam uma em cima da outra e reordenar
+o caminho para que isso não ocorra. Isso é bom pois, dada a desigualdade triangular das instâncias utilizadas para o TSP, a nova
+rota encontrada será com certeza melhor. No entanto, o algoritmo apesar de eficiente e bom não retorna uma solução ótima,
+uma vez que podemos ficar presos em um ótimo local durante sua execução. Essa abordagem é usada em diversos problemas de natureza combinatporia difícil,
+como no caso do TSP e também para problemas como VRP (\textit{Vehicle Routing Problem}). O código com a implementação
+dessa heurística pode ser encontrado neste \href{https://github.com/lframosferreira/tsp-heuristics}{repositório} no arquivo \textit{vnd.py}.
 
 \begin{center}
-	\begin{table}[h!]
+
+	\begin{table}[ht]
 		\centering
-		\begin{tabular}{|c|c|c|c|}
-			\hline
-			Algorithm & Instance     & Path Weight & Time (s) \\ \hline
-			sa        & kroD100.tsp  & 32445       & 0.1660   \\ \hline
-			sa        & lin105.tsp   & 21930       & 0.1835   \\ \hline
-			sa        & att48.tsp    & 11916       & 0.0681   \\ \hline
-			sa        & kroB150.tsp  & 47631       & 0.2201   \\ \hline
-			sa        & berlin52.tsp & 9419        & 0.0708   \\ \hline
-			sa        & kroA200.tsp  & 58072       & 0.2929   \\ \hline
-			sa        & rat195.tsp   & 4146        & 0.2827   \\ \hline
-			sa        & pr152.tsp    & 148754      & 0.2201   \\ \hline
-			sa        & st70.tsp     & 880         & 0.0967   \\ \hline
-			sa        & pr144.tsp    & 132181      & 0.2077   \\ \hline
-			sa        & pr124.tsp    & 123801      & 0.1748   \\ \hline
-			sa        & pr136.tsp    & 159539      & 0.1975   \\ \hline
-			sa        & kroB200.tsp  & 62789       & 0.2937   \\ \hline
-			sa        & kroB100.tsp  & 33466       & 0.1424   \\ \hline
-			sa        & kroA150.tsp  & 48895       & 0.2198   \\ \hline
-			sa        & kroA100.tsp  & 35865       & 0.1425   \\ \hline
-			sa        & pr107.tsp    & 75366       & 0.1497   \\ \hline
-			sa        & kroE100.tsp  & 34696       & 0.1406   \\ \hline
-			sa        & rat99.tsp    & 1786        & 0.1378   \\ \hline
-			sa        & kroC100.tsp  & 31168       & 0.1420   \\ \hline
-			sa        & pr76.tsp     & 142017      & 0.1082   \\ \hline
+		\begin{tabular}{llll}
+			\toprule
+			\textbf{Algorithm} & \textbf{Instance} & \textbf{Path Weight} & \textbf{Time (s)} \\
+			\midrule
+			2-OPT              & kroD100.tsp       & 22922                & 6.09e-08          \\
+			2-OPT              & lin105.tsp        & 15780                & 5.99e-08          \\
+			2-OPT              & att48.tsp         & 10933                & 5.51e-08          \\
+			2-OPT              & kroB150.tsp       & 28553                & 5.79e-08          \\
+			2-OPT              & berlin52.tsp      & 8352                 & 6.08e-08          \\
+			2-OPT              & kroA200.tsp       & 32336                & 6.48e-08          \\
+			2-OPT              & rat195.tsp        & 2547                 & 7.96e-08          \\
+			2-OPT              & pr152.tsp         & 77591                & 7.19e-08          \\
+			2-OPT              & st70.tsp          & 720                  & 6.10e-08          \\
+			2-OPT              & pr144.tsp         & 61507                & 8.28e-08          \\
+			2-OPT              & pr124.tsp         & 60981                & 5.86e-08          \\
+			2-OPT              & pr136.tsp         & 103206               & 6.17e-08          \\
+			2-OPT              & kroB200.tsp       & 33576                & 7.14e-08          \\
+			2-OPT              & kroB100.tsp       & 24324                & 5.90e-08          \\
+			2-OPT              & kroA150.tsp       & 30500                & 6.28e-08          \\
+			2-OPT              & kroA100.tsp       & 23675                & 5.87e-08          \\
+			2-OPT              & pr107.tsp         & 45099                & 5.70e-08          \\
+			2-OPT              & kroE100.tsp       & 24408                & 5.50e-08          \\
+			2-OPT              & rat99.tsp         & 1292                 & 5.44e-08          \\
+			2-OPT              & kroC100.tsp       & 22256                & 5.64e-08          \\
+			2-OPT              & pr76.tsp          & 125277               & 9.05e-08          \\
+			\bottomrule
 		\end{tabular}
-		\caption{Path weights and times for various TSP instances using the sa (simulated annealing) algorithm}
 	\end{table}
 
 \end{center}
-
 
 \end{document}
